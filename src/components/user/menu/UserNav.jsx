@@ -1,7 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-const User = () => (<>User
+const UserNav = () =>
+(<>
 <nav>
     <ol>
         <li><Link to = '/user/login'>Login</Link></li>
@@ -9,7 +10,7 @@ const User = () => (<>User
         <li><Link to = '/user/remove'>Remove</Link></li>
         <li><Link to = '/user/update'>Update</Link></li>
     </ol>
-</nav></>)
+</nav>    
+</>)
 
-
-export default User
+export default UserNav
