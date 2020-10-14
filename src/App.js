@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import {Nav} from './components'
+import {Board, Home, Item, User} from './pages'
+import {UserLogin, UserRegister, UserRemove, UserUpdate} from './components/user'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
-export default App;
+
+
+const App = () => (<>
+  <Router>
+    <Nav/>
+      <Switch>
+        
+          <Route exact path='/' component={Home}></Route>
+
+          <Route exact path='/user' component={User}></Route>
+          <Route path ='/user/login' component = {UserLogin}></Route>
+          <Route path ='/user/register' component = {UserRegister}></Route>
+          <Route path ='/user/remove' component = {UserRemove}> </Route>
+          <Route path ='/user/update' component = {UserUpdate}></Route>
+
+          <Route exact path='/item' component={Item}></Route>
+          <Route exact path='/board' component={Board}></Route>
+
+        
+      </Switch>
+    
+  </Router>
+</>)
+
+export default App
