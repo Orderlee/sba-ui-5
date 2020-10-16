@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import axios from 'axios'
+import {User} from '../../templates'
 import {UserNav} from'./menu'
+
 
 const UserLogin = () => {
     const [userid, setUserid] = useState()
@@ -25,8 +27,8 @@ const UserLogin = () => {
 
     }
 
-    return (<>
-    <UserNav/>
+    return (<User>
+    {/* <UserNav/> */}
     Login
     <table>
         <tr>
@@ -44,7 +46,7 @@ const UserLogin = () => {
             </td>
         </tr>
     </table>
-    </>)
+    </User>)
 }
 export default UserLogin
 
