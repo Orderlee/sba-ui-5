@@ -1,16 +1,16 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+// import React from 'react'
+// import {Link} from 'react-router-dom'
 
-const UserNav = () =>
-(<>
-<nav>
-    <ol>
-        <li><Link to = '/user/login'>Login</Link></li>
-        <li><Link to = '/user/register'>Register</Link></li>
-        <li><Link to = '/user/remove'>Remove</Link></li>
-        <li><Link to = '/user/update'>Update</Link></li>
-    </ol>
-</nav>    
-</>)
+// const UserNav = () =>
+// (<>
+// <nav>
+//     <ol>
+//         <li><Link to = '/user/login'>Login</Link></li>
+//         <li><Link to = '/user/register'>Register</Link></li>
+//         <li><Link to = '/user/remove'>Remove</Link></li>
+//         <li><Link to = '/user/update'>Update</Link></li>
+//     </ol>
+// </nav>    
+// </>)
 
-export default UserNav
+// export default UserNav

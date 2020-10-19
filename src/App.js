@@ -1,54 +1,49 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
 import {Nav} from './components'
-import {Board, Home, Item, User} from './templates'
-import {UserLogin, UserRegister, UserRemove, UserUpdate} from './components/user'
-import {ItemRead, ItemRegister, ItemRemove, ItemUpdate} from './components/item'
-import {BoardRead, BoardRegister, BoardRemove, BoardUpdate} from './container/board'
+import {ItemDetail, ItemList, ModifyItem, RegisterItem, RemoveItem } from './container/item'
+import {UserRegister, UserLogin, UserDetail, UserModify, UserWithdrawal} from './container/user'
+import {ArticleList, EditArticle, ReadArticle, RemoveArticle, WriteArticle} from './container/article'
+import {Home, User, Article, Item} from './templates'
+import { createStore, applyMiddleware, combineReducers} from 'redux';
+import {Provider} from 'react-redux'
+import {itemReducer } from './container/item/ItemList'
+import ReduxThunk from 'redux-thunk'
+const rootReducer = combineReducers({
+    itemReducer
+})
 
 
 
 
 const App = () => (<>
+
   <Router>
-    <Nav/>
+      <Nav/>
       <Switch>
-        
-          <Route exact path='/home' component = {Home}></Route>
-          <Redirect exact from ={'/'} to = {'/home'}></Redirect>
-          
-          
-          <Redirect path ='/user' component = {'User'}></Redirect>
-          <Redirect path ='/singup-form' component = {'UserRegister'}></Redirect>
-          <Redirect path ='/singin-form' component = {'UserLogin'}></Redirect>
-          <Redirect path ='/mypage' component = {'UserDetail'}></Redirect>
-          <Redirect path ='/modtfying-user-info' component = {'UserModify'}></Redirect>
-          <Redirect path ='/membership-withdrawl' component = {'UserWithdrawal'}></Redirect>
-          
-
-
-
-          {/* <Route exact path='/user' component = {User}></Route>
-          <Route path ='/user/login' component = {UserLogin}></Route>
-          <Route path ='/user/register' component = {UserRegister}></Route>
-          <Route path ='/user/remove' component = {UserRemove}> </Route>
-          <Route path ='/user/update' component = {UserUpdate}></Route> */}
-
-          <Route exact path='/item' component = {Item}></Route>
-          <Route  path='/item/read' component = {ItemRead}></Route>
-          <Route  path='/item/register' component = {ItemRegister}></Route>
-          <Route  path='/item/remove' component = {ItemRemove}></Route>
-          <Route  path='/item/update' component = {ItemUpdate}></Route>
-
-          <Route exact path='/board' component = {Board}></Route>
-          <Route path='/board/read' component = {BoardRead}></Route>
-          <Route path='/board/register' component = {BoardRegister}></Route>
-          <Route path='/board/remove' component = {BoardRemove}></Route>
-          <Route path='/board/update' component = {BoardUpdate}></Route>
-
-        
+          <Provider store = {createStore(rootReducer, applyMiddleware(ReduxThunk))}>
+              <Route path='/home' component={Home}></Route>
+              <Redirect exact from = {'/'} to={'/home'}/>
+              <Route path='/user' component={User}></Route>
+              <Route path='/signup-form' component={UserRegister}/>
+              <Route path='/signin-form' component={UserLogin}/>
+              <Route path='/mypage' component={UserDetail}/>
+              <Route path='/modifying-user-info' component={UserModify}/>
+              <Route path='/membership-withdrawal' component={UserWithdrawal}/>
+              <Route path='/item' component={Item}></Route>
+              <Route path='/item-list' component={ItemList}/>
+              <Route path='/item-detail' component={ItemDetail}/>
+              <Route path='/modify-item' component={ModifyItem}/>
+              <Route path='/register-item' component={RegisterItem}/>
+              <Route path='/remove-item' component={RemoveItem}/>
+              <Route path='/article' component={Article}></Route>
+              <Route path='/article-list' component={ArticleList}></Route>
+              <Route path='/edit-article' component={EditArticle}></Route>
+              <Route path='/read-article' component={ReadArticle}></Route>
+              <Route path='/remove-article' component={RemoveArticle}></Route>
+              <Route path='/write-article' component={WriteArticle}></Route>
+          </Provider>,    
       </Switch>
-    
   </Router>
 </>)
 
